@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8"> 
+</head>
+<script>
+
+		function receiveAndroidScanner(text){
+	        var txt= document.getElementById("txt");
+         	txt.innerHTML+=text+"<br>";
+
+        }
+
+		function getTime(){
+			return new Date();
+		}
+
+		//通知android打印内容
+		function print(){
+			var time=""+getTime();
+
+			document.getElementById("time").innerHTML=time;
+			window.android.JsPrint(time);
+
+
+		}
+		//通知android开启扫码
+		function startScanner(){
+			window.android.JsStartScanner();
+		}
+	</script>
+<body>
+
+
+<form action="">
+    <input type="button" onclick="print()" value="打印时间">
+    <p id="time">显示时间</p>
+    <br>
+    <input type="button" onclick="startScanner()" value="开启扫码">
+    <p id="txt"></p>
+</form>
+
+</body>
+</html>
